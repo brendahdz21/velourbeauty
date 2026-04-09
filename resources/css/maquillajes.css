@@ -1,0 +1,89 @@
+/* =========================================================
+   GESTIÓN DE MAQUILLAJES
+   SOLO ESTILOS EXCLUSIVOS DE MAQUILLAJES
+========================================================= */
+
+/* IMAGEN / PRODUCTO EN TABLA */
+.admin-product-logo-box {
+    width: 86px;
+    height: 86px;
+    background: #fff;
+    border: 1px solid #ead3d9;
+    border-radius: 18px;
+    box-shadow: 0 6px 14px rgba(170, 120, 131, 0.10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 8px;
+}
+
+.admin-product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+    display: block;
+}
+
+/* BADGES DE ESTADO */
+.makeup-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    min-width: 130px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.makeup-badge-active {
+    background: #eef5ff;
+    color: #3a78d4;
+    border: 1.5px solid #5b95ea;
+}
+
+.makeup-badge-inactive {
+    background: #f4eeff;
+    color: #7b57d1;
+    border: 1.5px solid #9c7cf0;
+}
+
+/* FORMULARIO CREATE / EDIT */
+.image-preview-box {
+    display: none;
+    margin: 20px auto 0 auto;
+    width: 140px;
+    height: 140px;
+    background: #ffffff;
+    border: 2px dashed #ebcfd6;
+    border-radius: 22px;
+    box-shadow: 0 8px 18px rgba(181, 125, 139, 0.08);
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 10px;
+    transition: all 0.25s ease;
+}
+
+.image-preview-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+@media (max-width: 768px) {
+    .admin-product-logo-box {
+        width: 72px;
+        height: 72px;
+    }
+
+    .image-preview-box {
+        width: 120px;
+        height: 120px;
+    }
+}
+
