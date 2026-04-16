@@ -13,7 +13,7 @@ class MaquillajeController extends Controller
     | LISTAR MAQUILLAJES
     |--------------------------------------------------------------------------
     | Muestra todos los maquillajes registrados.
-    | Permite buscar por nombre y filtrar por estado.
+    | También permite buscar por nombre y filtrar por estado.
     */
     public function index(Request $request)
     {
@@ -89,15 +89,12 @@ class MaquillajeController extends Controller
 
         // Redireccionar a la lista de maquillajes
         return redirect()->route('maquillajes.index')
-            ->with('success', 'Maquillaje Registrado Correctamente!');
+            ->with('success', 'Maquillaje registrado correctamente!');
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | CONSULTAR INFORMACIÓN
-    |--------------------------------------------------------------------------
-    | Retorna la vista con los datos del maquillaje para editar.
-    */
+    /**
+     * CONSULTAR INFORMACIÓN
+     */
     public function edit(Maquillaje $maquillaje)
     {
         $marcas = Marca::where('estado', 1)
@@ -108,14 +105,12 @@ class MaquillajeController extends Controller
         return view('maquillajes.edit', compact('maquillaje', 'marcas'));
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | ACTUALIZAR INFORMACIÓN
-    |--------------------------------------------------------------------------
-    | Actualiza los datos del maquillaje.
-    */
+    /**
+     * ACTUALIZAR INFORMACIÓN
+     */
     public function update(Request $request, Maquillaje $maquillaje)
     {
+        // Realizar validaciones del campo formulario
         $request->validate([
             'nombre' => 'required|string|max:255',
             'descripcion' => 'required|string|max:255',
@@ -151,19 +146,16 @@ class MaquillajeController extends Controller
             ->with('success', 'Actualización Exitosa :D');
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | ELIMINAR MAQUILLAJE
-    |--------------------------------------------------------------------------
-    | Elimina el registro de la base de datos.
-    */
+    /**
+     * ELIMINAR MAQUILLAJE
+     */
     public function destroy(Maquillaje $maquillaje)
     {
         // Eliminación del registro
         $maquillaje->delete();
 
-        // Redireccionar al listado
+        // Redireccionar a la lista de maquillajes
         return redirect()->route('maquillajes.index')
-            ->with('success', 'Maquillaje Eliminado Correctamente!');
+            ->with('success', 'Maquillaje eliminado correctamente!');
     }
 }

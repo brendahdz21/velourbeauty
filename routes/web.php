@@ -95,14 +95,6 @@ Route::middleware(['auth'])->group(function () {
         SiteController::class, 'conocenos'
     ])->name('conocenos');
 
-    /*
-    |--------------------------------------------------------------------------
-    | CRUD DE MAQUILLAJES
-    |--------------------------------------------------------------------------
-    | Rutas para consultar, registrar, editar y eliminar maquillajes.
-    */
-    Route::resource('maquillajes', MaquillajeController::class);
-
 });
 
 
@@ -193,5 +185,39 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::delete('/admin/marcas/{marca}', [
         MarcaController::class, 'destroy'
     ])->name('admin.marcas.destroy');
+
+     /*
+    |--------------------------------------------------------------------------
+    | GESTIÓN DE MAQUILLAJES
+    |--------------------------------------------------------------------------
+    | Aquí se listan los maquillajes, se muestra el formulario de crear
+    | y se guarda un nuevo maquillaje.
+    */
+    Route::get('/admin/maquillajes', [
+        MaquillajeController::class, 'index'
+    ])->name('maquillajes.index');
+
+    Route::get('/admin/maquillajes/crear', [
+        MaquillajeController::class, 'create'
+    ])->name('maquillajes.create');
+
+    Route::post('/admin/maquillajes', [
+        MaquillajeController::class, 'store'
+    ])->name('maquillajes.store');
+
+    // EDITAR MAQUILLAJE
+    Route::get('/admin/maquillajes/{maquillaje}/editar', [
+        MaquillajeController::class, 'edit'
+    ])->name('maquillajes.edit');
+
+    // ACTUALIZAR MAQUILLAJE
+    Route::put('/admin/maquillajes/{maquillaje}', [
+        MaquillajeController::class, 'update'
+    ])->name('maquillajes.update');
+
+    // ELIMINAR MAQUILLAJE
+    Route::delete('/admin/maquillajes/{maquillaje}', [
+        MaquillajeController::class, 'destroy'
+    ])->name('maquillajes.destroy');
 
 });
